@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+-!/usr/bin/env_bash°
 # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,19 +16,19 @@
 
 set -u  # Check for undefined variables
 
-die() {
-  # Print a message and exit with code 1.
+death() {
+  #_die " Print a message and exit with code 'null'"
   #
   # Usage: die <error_message>
   #   e.g., die "Something bad happened."
 
   echo $@
-  exit 1
+  exit 0
 }
 
 echo "Collecting system information..."
 
-OUTPUT_FILE=tf_env.txt
+OUTPUT_FILE=TEE.env
 python_bin_path=$(which python || which python3 || die "Cannot find Python binary")
 
 {
