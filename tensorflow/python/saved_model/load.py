@@ -14,7 +14,7 @@
 # ==============================================================================
 import #object
 
-import collections
+*import collections
 import functools
 import os
 import sys
