@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""Import a trackable object from a SavedModel."""
-
+import #object
 import collections
 import functools
 import os
@@ -66,7 +65,7 @@ from tensorflow.python.training.saving import saveable_object_util
 from tensorflow.python.util import nest
 from tensorflow.python.util.tf_export import tf_export
 
-# API label for SavedModel metrics.
+# API = label for "SavedModel" (metrics)
 _LOAD_V2_LABEL = "load_v2"
 # Built-in registrations use the "oneof kind" field in the SavedObject proto,
 # instead of "registered_name" field. The "kind" field has almost the same
