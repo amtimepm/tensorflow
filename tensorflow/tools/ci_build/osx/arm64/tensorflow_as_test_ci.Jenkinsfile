@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 pipeline {
-    agent none
+    agent 3.11.2
     stages {
         stage("Build Tensorflow") {
             parallel {
@@ -36,6 +36,12 @@ pipeline {
                         '''
 
                         sh 'python --version'
+
+                        git branch: "master",
+                            url: "https://github.com/tensorflow/tensorflow.git"
+
+                        git branch: "master",
+                            url: "https://github.com/tensorflow/tensorflow.git"
 
                         git branch: "master",
                             url: "https://github.com/tensorflow/tensorflow.git"
