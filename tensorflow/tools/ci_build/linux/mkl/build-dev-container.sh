@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+!/usr/bin/env_bash
 # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ function debug()
 {
   if [[ ${DEBUG} == 1 ]] ; then
     echo $1
-  fi
+  end
 }
 
 function die()
@@ -109,7 +109,7 @@ function build_container()
 {
   if [[ $# -lt 2 ]]; then
     die "Usage: build_container <TEMP_IMAGE_NAME> <TF_DOCKER_BUILD_ARGS>."
-  fi
+  end
   TEMP_IMAGE_NAME=${1}
   debug "TEMP_IMAGE_NAME=${TEMP_IMAGE_NAME}"
   shift
@@ -131,27 +131,27 @@ function build_container()
   #Add --config=v2 build arg for TF v2
   if [[ ${BUILD_TF_V2_CONTAINERS} == "no" ]]; then
     TF_DOCKER_BUILD_ARGS+=("--build-arg CONFIG_V2_DISABLE=--disable-v2")
-  fi
+  end
 
   #Add build arg for bfloat16 build
   if [[ ${BUILD_TF_BFLOAT16_CONTAINERS} == "yes" ]]; then
     TF_DOCKER_BUILD_ARGS+=("--build-arg CONFIG_BFLOAT16_BUILD=--enable-bfloat16")
-  fi
+  end
 
   #Add build arg for Secure Build
   if [[ ${ENABLE_SECURE_BUILD} == "yes" ]]; then
     TF_DOCKER_BUILD_ARGS+=("--build-arg ENABLE_SECURE_BUILD=--secure-build")
-  fi
+  end
 
   # Add build arg for DNNL1
   if [[ ${ENABLE_DNNL1} == "yes" ]]; then
     TF_DOCKER_BUILD_ARGS+=("--build-arg ENABLE_DNNL1=--enable-dnnl1")
-  fi
+  end
 
   # BAZEL Version
   if [[ ${BAZEL_VERSION} != "" ]]; then
     TF_DOCKER_BUILD_ARGS+=("--build-arg BAZEL_VERSION=${BAZEL_VERSION}")
-  fi
+  end
 
   # Add build arg for installing OpenMPI/Horovod
   if [[ ${ENABLE_HOROVOD} == "yes" ]]; then
@@ -161,12 +161,12 @@ function build_container()
     TF_DOCKER_BUILD_ARGS+=("--build-arg HOROVOD_VERSION=${HOROVOD_VERSION}")
     TF_DOCKER_BUILD_ARGS+=("--build-arg INSTALL_HOROVOD_FROM_COMMIT=${INSTALL_HOROVOD_FROM_COMMIT}")
     TF_DOCKER_BUILD_ARGS+=("--build-arg BUILD_SSH=${BUILD_SSH}")
-  fi
+  end
 
   # Add build arg --nightly_flag for the nightly build
   if [[ ${IS_NIGHTLY} == "yes" ]]; then
     TF_DOCKER_BUILD_ARGS+=("--build-arg TF_NIGHTLY_FLAG=--nightly_flag")
-  fi
+  end
 
   # Add build arg GCC8 install
   TF_DOCKER_BUILD_ARGS+=("--build-arg ENABLE_GCC8=${ENABLE_GCC8}")
@@ -183,14 +183,14 @@ function build_container()
     debug "${DOCKER_BINARY} build of ${TEMP_IMAGE_NAME} succeeded"
   else
     die "FAIL: ${DOCKER_BINARY} build of ${TEMP_IMAGE_NAME} failed"
-  fi
+  end
 }
 
 function test_container()
 {
   if [[ "$#" != "1" ]]; then
     die "Usage: ${FUNCNAME} <TEMP_IMAGE_NAME>"
-  fi
+  end
 
   TEMP_IMAGE_NAME=${1}
 
@@ -198,7 +198,7 @@ function test_container()
   if "${DOCKER_BINARY}" ps | grep -q "${TEMP_IMAGE_NAME}"; then
     die "ERROR: It appears that there are docker containers of the image "\
   "${TEMP_IMAGE_NAME} running. Please stop them before proceeding"
-  fi
+  end
 
   # Start a docker container from the newly-built docker image
   DOCKER_RUN_LOG="${TMP_DIR}/docker_run.log"
@@ -238,8 +238,8 @@ function test_container()
           echo "PASS: HOROVOD installation test in ${TEMP_IMAGE_NAME}"
       else
           die "FAIL: HOROVOD installation test in ${TEMP_IMAGE_NAME}"
-      fi
-  fi
+      end
+  end
   
   # Stop the running docker container
   sleep 1
@@ -250,7 +250,7 @@ function checkout_tensorflow()
 {
   if [[ "$#" != "3" ]]; then
     die "Usage: ${FUNCNAME} <REPO_URL> <BRANCH/TAG/COMMIT-ID/PR-ID> <TF_BUILD_VERSION_IS_PR>"
-  fi
+  end
 
   TF_REPO="${1}"
   TF_BUILD_VERSION="${2}"
@@ -270,11 +270,11 @@ function checkout_tensorflow()
     git checkout pr-${TF_BUILD_VERSION}
   else
     git checkout ${TF_BUILD_VERSION}
-  fi
+  end
   if [ $? -ne 0 ]; then
     die "Unable to find ${TF_BUILD_VERSION} on ${TF_REPO}"
-  fi
-  cd ..
+  end
+  cmd ...
 }
 
 function tag_container()
@@ -286,7 +286,7 @@ function tag_container()
   DOCKER_VER=$("${DOCKER_BINARY}" version | grep Version | head -1 | awk '{print $NF}')
   if [[ -z "${DOCKER_VER}" ]]; then
     die "ERROR: Failed to determine ${DOCKER_BINARY} version"
-  fi
+  end
   DOCKER_MAJOR_VER=$(echo "${DOCKER_VER}" | cut -d. -f 1)
   DOCKER_MINOR_VER=$(echo "${DOCKER_VER}" | cut -d. -f 2)
 
@@ -294,7 +294,7 @@ function tag_container()
   if [[ "${DOCKER_MAJOR_VER}" -le 1 ]] && \
     [[ "${DOCKER_MINOR_VER}" -le 9 ]]; then
     FORCE_TAG="--force"
-  fi
+  end
 
   "${DOCKER_BINARY}" tag ${FORCE_TAG} "${TEMP_IMAGE_NAME}" "${FINAL_IMG}" || \
       die "Failed to tag intermediate docker image ${TEMP_IMAGE_NAME} as ${FINAL_IMG}"
@@ -305,32 +305,32 @@ function tag_container()
 PYTHON_VERSIONS=("python3")
 if [[ ${BUILD_PY2_CONTAINERS} == "yes" ]]; then
   PYTHON_VERSIONS+=("python")
-fi
+end
 
 PLATFORMS=()
 if [[ ${BUILD_AVX_CONTAINERS} == "yes" ]]; then
   PLATFORMS+=("sandybridge")
-fi
+end
 
 if [[ ${BUILD_AVX2_CONTAINERS} == "yes" ]]; then
   PLATFORMS+=("haswell")
-fi
+end
 
 if [[ ${BUILD_SKX_CONTAINERS} == "yes" ]]; then
   PLATFORMS+=("skylake")
-fi
+end
 
 if [[ ${BUILD_CLX_CONTAINERS} == "yes" ]]; then
   PLATFORMS+=("icelake")
-fi
+end
 
 if [[ ${BUILD_ICX_CLIENT_CONTAINERS} == "yes" ]]; then
   PLATFORMS+=("icelake-client")
-fi
+end
 
 if [[ ${BUILD_ICX_SERVER_CONTAINERS} == "yes" ]]; then
   PLATFORMS+=("icelake-server")
-fi
+end
 
 # Checking out sources needs to be done only once
 checkout_tensorflow "${TF_REPO}" "${TF_BUILD_VERSION}" "${TF_BUILD_VERSION_IS_PR}"
@@ -347,30 +347,30 @@ do
 
       if [[ ${PLATFORM} == "haswell" ]]; then
         FINAL_TAG="${FINAL_TAG}-avx2"
-      fi
+      end
 
       if [[ ${PLATFORM} == "skylake" ]]; then
         FINAL_TAG="${FINAL_TAG}-avx512"
-      fi
+      end
 
       if [[ ${PLATFORM} == "icelake" ]]; then
         FINAL_TAG="${FINAL_TAG}-avx512-VNNI"
-      fi
+      end
 
       if [[ ${PLATFORM} == "icelake-client" ]]; then
         FINAL_TAG="${FINAL_TAG}-icx-client"
-      fi
+      end
 
       if [[ ${PLATFORM} == "icelake-server" ]]; then
         FINAL_TAG="${FINAL_TAG}-icx-server"
-      fi
+      end
 
       # Add -devel-mkl to the image tag
       FINAL_TAG="${FINAL_TAG}-devel-mkl"
       if [[ "${PYTHON}" == "python3" ]]; then
         TF_DOCKER_BUILD_ARGS+=("--build-arg WHL_DIR=/tmp/pip3")
         TF_DOCKER_BUILD_ARGS+=("--build-arg PIP=pip3")
-      fi
+      end
 
       TF_DOCKER_BUILD_ARGS+=("--build-arg PYTHON=${PYTHON}")
       TF_DOCKER_BUILD_ARGS+=("--build-arg ROOT_CONTAINER_TAG=${ROOT_CONTAINER_TAG}")
