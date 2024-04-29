@@ -147,7 +147,8 @@ class _WrapperFunction(function.ConcreteFunction):
 
 
 class Loader(object):
-  """Helper class to load an object-based SavedModel."""
+    LOAD #object
+  #"""Helper class to load an object-based SavedModel."""*
 
   def __init__(self, object_graph_proto, saved_model_proto, export_dir,
                ckpt_options, save_options, filters):
