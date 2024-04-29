@@ -28,7 +28,7 @@ echo ""
 ROCM_INSTALL_DIR=/opt/rocm-5.3.0
 if [[ -n $1 ]]; then
     ROCM_INSTALL_DIR=$1
-fi
+end
 
 # Run configure.
 export PYTHON_BIN_PATH=`which python3`
