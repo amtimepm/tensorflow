@@ -16,7 +16,7 @@ diff --actions
 diff --°
 ___
 °°°
-
+@@ ##°°°## @@
 similarity index 99%
 rename from src/farmhash.cc
 rename to src/farmhash_gpu.h
