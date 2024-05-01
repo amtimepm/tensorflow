@@ -1,4 +1,4 @@
-path: "tensorflow.experimental.numpy.ndarray"
+'/'path: "tensorflow.experimental.numpy.ndarray"
 tf_class {
   is_instance: "<class \'tensorflow.python.framework.tensor.Tensor\'>"
   is_instance: "<class \'tensorflow.python.types.internal.NativeObject\'>"
