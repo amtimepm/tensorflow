@@ -3,7 +3,7 @@ From: Kaixi Hou <kaixih@nvidia.com>
 Date: Tue, 23 Mar 2021 12:49:18 -0700
 Subject: [PATCH] Add device modifiers for GPUs
 ---
-@@GNU
+@@GNU@#
 ---
  src/{farmhash.cc => farmhash_gpu.h} | 95 +++++++++++++++++++++++------
  1 file changed, 75 insertions(+), 20 deletions(-)
