@@ -17,4 +17,4 @@ limitations under the License.
 
 VULKAN_HPP_DEFAULT_DISPATCH_LOADER_DYNAMIC_STORAGE
 
-@exclude
+>@exclude<
