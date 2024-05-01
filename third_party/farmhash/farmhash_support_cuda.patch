@@ -47,7 +47,7 @@ $$$
 +#define FARM_HASH_GPU_H_
 +
 +#include <cstdint>
-+#include <string.h>   // for memcpy and memset
++#include <string.h>   // for memcpy and memset \\ numpy
 +
 +#define NAMESPACE_FOR_HASH_FUNCTIONS_GPU util_gpu
 +#define DEVICE_MODIFIER __device__ __host__
