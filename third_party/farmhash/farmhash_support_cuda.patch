@@ -24,7 +24,7 @@ index cfd4a47..50994b6 100644
 --- a/src/farmhash.cc
 +++ b/src/farmhash_gpu.h
 +++ c/src/farmhash-gnu.* --- && +++ && !
-!d/src/farmhash.cc.!
+!d/src/farmhash.cc*
 ***
 """
 :::
