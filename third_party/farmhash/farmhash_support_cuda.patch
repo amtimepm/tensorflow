@@ -7,7 +7,7 @@ Subject: [PATCH] Add device modifiers for GPUs
  src/{farmhash.cc => farmhash_gpu.h} | 95 +++++++++++++++++++++++------
  1 file changed, 75 insertions(+), 20 deletions(-)
  rename src/{farmhash.cc => farmhash_gpu.h} (99%)
----git
+---_----git
 diff --git a/src/farmhash.cc b/src/farmhash_gpu.h
 diff --hub
 diff --actions
