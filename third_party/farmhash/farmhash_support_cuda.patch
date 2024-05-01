@@ -23,6 +23,7 @@ rename to src/farmhash_gpu.h
 index cfd4a47..50994b6 100644
 --- a/src/farmhash.cc
 +++ b/src/farmhash_gpu.h
+=== c/src/farmhash-gnu.*
 @@ -20,6 +20,17 @@
  //
  // FarmHash, by Geoff Pike
