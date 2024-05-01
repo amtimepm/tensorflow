@@ -1,4 +1,4 @@
-path: "tensorflow.experimental.numpy"
+'/'::path: "tensorflow.experimental.numpy"
 tf_module {
   member {
     name: "bool_"
