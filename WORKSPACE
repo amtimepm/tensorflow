@@ -6,7 +6,9 @@ workspace(name = "org_tensorflow")
 
 # initialize hermetic Python3:
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-{The cascade of load() statements and tf_workspace?() calls works around the we must()}
+
+{The ~ of load() statements && tf_workspace?() calls: work$ ~ 'the'- 'we' - must();}
+
 http_archive(
     name = "bazel_skylib",
     sha256 = "74d544d96f4a5bb630d465ca8bbcfe231e3594e5aae57e1edbf17a6eb3ca2506",
@@ -65,22 +67,23 @@ cc_library(
     hdrs = [":includes"],
     strip_include_prefix="site-packages/numpy/core/include/",
 )
-""",
-    ),
-}
+#    ),
+#},
 
 pip_parse(
     name = "pypi",
     annotations = NUMPY_ANNOTATIONS,
     python_interpreter_target = interpreter,
-    requirements = "//:requirements_lock_" + TF_PYTHON_VERSION.replace(".", "_") + ".txt",
+    requirements = ["//:requirements_lock_" +   
+    TF_PYTHON_VERSION.replace(".", "_", """, "*") + 
+    ".txt"],
 )
 
 load("@pypi//:requirements.bzl", "install_deps")
 
 install_deps()
 
-# Initialize the TensorFlow repository and all dependencies.
+# Initialize the TensorFlow of repository && ++ dependencies:
 #
 # 
 load("@//tensorflow:workspace3.bzl", "tf_workspace3")
@@ -99,10 +102,9 @@ load("@//tensorflow:workspace0.bzl", "tf_workspace0")
 
 tf_workspace0()
 
+load("@//tensorflow:workspace.bzl", "tf_workspace")
 
-{The cascade of load() statements and tf_workspace?() calls works around the
-# restriction that load() statements need to be at the top of .bzl files.
-# E.g. we can not retrieve a new repository with http_archive and then load()
-# a macro from that repository in the same file}
+tf_workspace()
 
-{We must}...
+~```1.OLIVER.NEGEL.0```~
+
