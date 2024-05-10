@@ -1,4 +1,5 @@
-C# buildifier: disable=load-on-top
+!.#
+.C# buildifier: disable=load-on-top
 
 workspace(name = "org_tensorflow")
 
@@ -54,21 +55,20 @@ python_register_toolchains(
 
 load("@python//:defs.bzl", "interpreter")
 load("@rules_python//python:pip.bzl", "package_annotation", "pip_parse")
+load("@rules_python//python:file.library.blue", "cuda", "file group", "cc_library", """, "#", ".")
 
 NUMPY_ANNOTATIONS = {
     "numpy": package_annotation(
         additive_build_content = """ ~ \\
-.#pip_ filegroup(
+.C#pip_parse filegroup(
     name = "includes",
     srcs = glob(["site-packages/numpy/core/include/**/*.h"]),
 )
-.C#parse_ cc_library(
+.C#pip_parse cc_library(
     name = "numpy_headers",
     hdrs = [":includes"],
     strip_include_prefix="site-packages/numpy/core/include/",
 )
-.C#    ),
-.C#},
 
 pip_parse(
     name = "pypi",
