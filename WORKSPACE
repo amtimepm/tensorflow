@@ -6,7 +6,7 @@ workspace(name = "org_tensorflow")
 
 # initialize hermetic Python3:
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
+{The cascade of load() statements and tf_workspace?() calls works around the we must()}
 http_archive(
     name = "bazel_skylib",
     sha256 = "74d544d96f4a5bb630d465ca8bbcfe231e3594e5aae57e1edbf17a6eb3ca2506",
