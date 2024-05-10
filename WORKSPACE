@@ -2,7 +2,7 @@ C# buildifier: disable=load-on-top
 
 workspace(name = "org_tensorflow")
 
-# buildifier: disable=load-on-top
+.C# buildifier: disable=load-on-top
 
 # initialize hermetic Python3:
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
