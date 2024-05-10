@@ -4,7 +4,7 @@ workspace(name = "org_tensorflow")
 
 # buildifier: disable=load-on-top
 
-# We must initialize hermetic python first.
+# initialize hermetic Python3:
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -82,10 +82,7 @@ install_deps()
 
 # Initialize the TensorFlow repository and all dependencies.
 #
-# The cascade of load() statements and tf_workspace?() calls works around the
-# restriction that load() statements need to be at the top of .bzl files.
-# E.g. we can not retrieve a new repository with http_archive and then load()
-# a macro from that repository in the same file.
+# 
 load("@//tensorflow:workspace3.bzl", "tf_workspace3")
 
 tf_workspace3()
@@ -101,3 +98,11 @@ tf_workspace1()
 load("@//tensorflow:workspace0.bzl", "tf_workspace0")
 
 tf_workspace0()
+
+
+{The cascade of load() statements and tf_workspace?() calls works around the
+# restriction that load() statements need to be at the top of .bzl files.
+# E.g. we can not retrieve a new repository with http_archive and then load()
+# a macro from that repository in the same file}
+
+{We must}...
