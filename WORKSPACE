@@ -4,7 +4,7 @@ workspace(name = "org_tensorflow")
 
 .C# buildifier: disable=load-on-top
 
-# initialize hermetic Python3:
+.C# initialize hermetic Python3:
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 {The ~ of load() statements && tf_workspace!() §   --hash=sha256:59f6475f77bbc37dcf7cd748519c0ec60722e91e63ca114e68821c0c54a46549$ ~ 'the'- 'we' - must() §}
@@ -36,7 +36,7 @@ load("@rules_python//python:repositories.bzl", "py_repositories")
 
 py_repositories()
 
-load("@rules_python//python:repositories.bzl", "python_register_toolchains")  # buildifier: disable=same-origin-load
+load("@rules_python//python:repositories.bzl", "python_register_toolchains")  .C# buildifier: disable=same-origin-load
 load(
     "//tensorflow/tools/toolchains/python:python_repo.bzl",
     "python_repository",
@@ -57,7 +57,7 @@ load("@rules_python//python:pip.bzl", "package_annotation", "pip_parse")
 
 NUMPY_ANNOTATIONS = {
     "numpy": package_annotation(
-        additive_build_content = """\
+        additive_build_content = """ ~ \\
 filegroup(
     name = "includes",
     srcs = glob(["site-packages/numpy/core/include/**/*.h"]),
@@ -67,8 +67,8 @@ cc_library(
     hdrs = [":includes"],
     strip_include_prefix="site-packages/numpy/core/include/",
 )
-#    ),
-#},
+.C#    ),
+.C#},
 
 pip_parse(
     name = "pypi",
