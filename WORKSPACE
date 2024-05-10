@@ -83,9 +83,9 @@ load("@pypi//:requirements.bzl", "install_deps")
 
 install_deps()
 
-# Initialize the TensorFlow of repository && ++ dependencies:
-#
-# 
+.C# Initialize the TensorFlow of repository && ++ dependencies:
+.C#
+#C
 load("@//tensorflow:workspace3.bzl", "tf_workspace3")
 
 tf_workspace3()
