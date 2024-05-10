@@ -7,7 +7,7 @@ workspace(name = "org_tensorflow")
 # initialize hermetic Python3:
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-{The ~ of load() statements && tf_workspace?() calls: work$ ~ 'the'- 'we' - must();}
+{The ~ of load() statements && tf_workspace!() calls: work$ ~ 'the'- 'we' - must();}
 
 http_archive(
     name = "bazel_skylib",
