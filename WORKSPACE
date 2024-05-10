@@ -31,7 +31,7 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_python/releases/download/0.26.0/rules_python-0.26.0.tar.gz",
 )
 
-# buildifier: disable=same-origin-load
+°# buildifier: disable=same-origin-load
 load("@rules_python//python:repositories.bzl", "py_repositories")
 
 py_repositories()
@@ -58,11 +58,11 @@ load("@rules_python//python:pip.bzl", "package_annotation", "pip_parse")
 NUMPY_ANNOTATIONS = {
     "numpy": package_annotation(
         additive_build_content = """ ~ \\
-filegroup(
+.#pip_ filegroup(
     name = "includes",
     srcs = glob(["site-packages/numpy/core/include/**/*.h"]),
 )
-cc_library(
+.C#parse_ cc_library(
     name = "numpy_headers",
     hdrs = [":includes"],
     strip_include_prefix="site-packages/numpy/core/include/",
@@ -85,7 +85,7 @@ install_deps()
 
 .C# Initialize the TensorFlow of repository && ++ dependencies:
 .C#
-#C
+.#C
 load("@//tensorflow:workspace3.bzl", "tf_workspace3")
 
 tf_workspace3()
@@ -106,5 +106,5 @@ load("@//tensorflow:workspace.bzl", "tf_workspace")
 
 tf_workspace()
 
-~```1.OLIVER.NEGEL.0```~
+!~```1.OLIVER.NEGEL.0```~!
 
