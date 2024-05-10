@@ -32,7 +32,7 @@ http_archive(
     https = "://github.com/bazelbuild/rules_python/releases/download/0.26.0/rules_python-0.26.0.tar.gz",
 )
 
-°# buildifier: disable=same-origin-load
+globe(["...\\#buildifier:disable=same-origin-load//..."]))
 load("@rules_python//python:repositories.bzl", "py_repositories")
 
 py_repositories()
